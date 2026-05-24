@@ -1,8 +1,9 @@
 import axios from "axios";
 
-export default axios.create({
+const API = axios.create({
 
-baseURL:
-"https://taskflow-backend-1unf.onrender.com/api"
+baseURL:"https://taskflow-backend-1unf.onrender.com/api"
 
 });
+
+export default API;
