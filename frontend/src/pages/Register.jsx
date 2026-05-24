@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import API from "../services/api";
-import "../styles/auth.css";
 
-function Register() {
+function Register(){
 
-const navigate = useNavigate();
+const navigate=useNavigate();
 
 const [form,setForm]=useState({
 
@@ -22,9 +21,7 @@ e.preventDefault();
 
 try{
 
-const res=
-
-await API.post(
+const res=await API.post(
 
 "/auth/register",
 
@@ -39,10 +36,6 @@ res.data.token
 
 );
 
-alert(
-"Registration Successful"
-);
-
 navigate(
 "/dashboard"
 );
@@ -54,7 +47,7 @@ catch(error){
 console.log(error);
 
 alert(
-"Registration Failed"
+"Registration failed"
 );
 
 }
@@ -71,18 +64,20 @@ return(
 
 <h1>
 
-Create Account 🚀
+Register 🚀
 
 </h1>
 
 <form onSubmit={handleSubmit}>
 
-
 <input
+
 className="auth-input"
-type="text"
-placeholder="Full Name"
+
+placeholder="Name"
+
 value={form.name}
+
 onChange={(e)=>
 
 setForm({
@@ -93,14 +88,18 @@ name:e.target.value
 })
 
 }
+
 />
 
 
 <input
+
 className="auth-input"
-type="email"
-placeholder="Email Address"
+
+placeholder="Email"
+
 value={form.email}
+
 onChange={(e)=>
 
 setForm({
@@ -111,14 +110,20 @@ email:e.target.value
 })
 
 }
+
 />
 
 
 <input
+
 className="auth-input"
+
 type="password"
+
 placeholder="Password"
+
 value={form.password}
+
 onChange={(e)=>
 
 setForm({
@@ -129,12 +134,16 @@ password:e.target.value
 })
 
 }
+
 />
 
 
 <button
+
 className="auth-btn"
+
 type="submit"
+
 >
 
 Register
@@ -144,32 +153,18 @@ Register
 </form>
 
 
-<p
-style={{
+<p>
 
-marginTop:"20px",
-textAlign:"center"
+Already have account?
 
-}}
->
-
-Already have an account?
-
-<Link
-to="/"
-style={{
-
-marginLeft:"8px",
-color:"#60a5fa"
-
-}}
->
+<Link to="/">
 
 Login
 
 </Link>
 
 </p>
+
 
 </div>
 

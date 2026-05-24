@@ -1,7 +1,6 @@
-import {useState} from "react";
-import {Link,useNavigate} from "react-router-dom";
+import { useState } from "react";
+import { useNavigate,Link } from "react-router-dom";
 import API from "../services/api";
-import "../styles/auth.css";
 
 function Login(){
 
@@ -14,15 +13,14 @@ password:""
 
 });
 
+
 const handleSubmit=async(e)=>{
 
 e.preventDefault();
 
 try{
 
-const res=
-
-await API.post(
+const res=await API.post(
 
 "/auth/login",
 
@@ -43,7 +41,9 @@ navigate(
 
 }
 
-catch{
+catch(error){
+
+console.log(error);
 
 alert(
 "Invalid credentials"
@@ -53,6 +53,8 @@ alert(
 
 };
 
+
+
 return(
 
 <div className="auth-container">
@@ -61,15 +63,22 @@ return(
 
 <h1>
 
-TaskFlow Login
+Login 🚀
 
 </h1>
 
 <form onSubmit={handleSubmit}>
 
 <input
+
 className="auth-input"
+
+type="email"
+
 placeholder="Email"
+
+value={form.email}
+
 onChange={(e)=>
 
 setForm({
@@ -80,13 +89,20 @@ email:e.target.value
 })
 
 }
+
 />
 
 
 <input
+
 className="auth-input"
+
 type="password"
+
 placeholder="Password"
+
+value={form.password}
+
 onChange={(e)=>
 
 setForm({
@@ -97,11 +113,16 @@ password:e.target.value
 })
 
 }
+
 />
 
 
 <button
+
 className="auth-btn"
+
+type="submit"
+
 >
 
 Login
@@ -113,15 +134,16 @@ Login
 
 <p>
 
-New User?
+No account?
 
 <Link to="/register">
 
- Register
+Register
 
 </Link>
 
 </p>
+
 
 </div>
 
