@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import API from "../services/api";
 
 function Login(){
@@ -54,7 +54,6 @@ alert(
 };
 
 
-
 return(
 
 <div className="auth-container">
@@ -67,7 +66,9 @@ Login 🚀
 
 </h1>
 
+
 <form onSubmit={handleSubmit}>
+
 
 <input
 
@@ -129,6 +130,7 @@ Login
 
 </button>
 
+
 </form>
 
 
@@ -136,7 +138,9 @@ Login
 
 No account?
 
-<Link to="/register">
+<Link
+to="/register"
+>
 
 Register
 

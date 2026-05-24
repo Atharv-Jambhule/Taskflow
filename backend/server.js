@@ -6,22 +6,15 @@ require("dotenv").config();
 
 const app=express();
 
-
-// Middleware
-
 app.use(express.json());
 
 app.use(
 
 cors({
 
-origin:[
+origin:true,
 
-"http://localhost:5173",
-
-"https://taskflow-zeta-fawn.vercel.app"
-
-],
+credentials:true,
 
 methods:[
 
@@ -43,10 +36,6 @@ allowedHeaders:[
 
 );
 
-
-
-// MongoDB Connection
-
 mongoose.connect(
 
 process.env.MONGO_URI
@@ -56,9 +45,7 @@ process.env.MONGO_URI
 .then(()=>{
 
 console.log(
-
 "MongoDB Connected"
-
 );
 
 })
@@ -70,22 +57,14 @@ console.log(err);
 });
 
 
-
-// Test Route
-
 app.get("/",(req,res)=>{
 
 res.send(
-
 "TaskFlow API Running"
-
 );
 
 });
 
-
-
-// Routes
 
 app.use(
 
@@ -104,9 +83,6 @@ require("./routes/taskRoutes")
 
 );
 
-
-
-// Server
 
 const PORT=
 
